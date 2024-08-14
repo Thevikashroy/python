@@ -1,16 +1,28 @@
 
 
+#  find the Number of Island
+
+def expandNode(matrix,i,j,visited,n):
+    if i<0 or i >= n or j < 0 or j>= n or matrix[i][j] == 0 or visited[i][j] ==1:
+        return
+    visited[i][j] = 1
+    expandNode(matrix,i-1,j,visited,n)  
+    expandNode(matrix,i+1,j,visited,n)
+    expandNode(matrix,i,j-1,visited,n)
+    expandNode(matrix,i,j+1,visited,n)
 
 
+def getNumberOfIsland(matrix,n):
+    visited = [[0 for i in range(n)] for j in range(n)]
+    ans = 0
+     # 1- land, 0- water
+    for i in range(n):
+        for j in range(n):
+            if visited[i][j] == 0 and matrix[i][j] == 1:    
+                expandNode(matrix,i,j,visited,n)
+                ans += 1
+    return ans
 
-
-def countIsland(edges,row,col):
-    count = 0
-    visited = [[0 for i in range(col)] for j in range(row)]
-    for i in range(row):
-        for j in range(col):
-            if visited[i][j] == 1 and m[i][j] == 0:
-                count += 1
 
 
 
@@ -19,17 +31,16 @@ def countIsland(edges,row,col):
 
 
 def main():
-    edges = [[0, 0, 0, 0, 0, 1, 1],
+    matrix = [[0, 0, 0, 0, 0, 1, 1],
              [1, 1, 0, 0, 0, 0, 0],
              [1, 1, 0, 1, 0, 1, 1],
              [1, 1, 0, 1, 0, 1, 1],
              [1, 1, 0, 0, 1, 0, 1],
              [1, 1, 1, 1, 1, 0, 0],
              [0, 0, 0, 1, 1, 1, 1],]
-    row = len(edges)
-    col = len(edges[0])
-    graph = buildGraph(row,col,edges)
-    print("Total no of island",graph.countIsland)
+    n = len(matrix)
+    ans = getNumberOfIsland(matrix,n)
+    print(ans)
 
 main()
 

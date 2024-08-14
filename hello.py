@@ -3,14 +3,20 @@
  
 
 
-arr= [1, 2, 3, 4, 5]
-# Output: [3, 2, 1, 5, 4]
-k= 3
-n = len(arr)
-for i in range(0,n,k):
-    if i>n-k:
-        arr[i:] = reversed(arr[i:])
+# arr= [1, 2, 3, 4, 5]
+# # Output: [3, 2, 1, 5, 4]
+# k= 3
+# n = len(arr)
+# for i in range(0,n,k):
+#     if i>n-k:
+#         arr[i:] = reversed(arr[i:])
+# # print(arr)
+#     else:
+#         arr[i:i+k] = reversed(arr[i:i+k])
 # print(arr)
-    else:
-        arr[i:i+k] = reversed(arr[i:i+k])
-print(arr)
+
+# find smallest element in array
+arr = [7,10,4,3,20,15]
+small = min(arr)
+print(small)
+
